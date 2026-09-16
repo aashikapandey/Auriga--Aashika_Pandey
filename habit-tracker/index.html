@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Habit Tracker — 75 Day Challenge</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand-block">
+        <div class="brand-mark">🔥</div>
+        <div>
+          <div class="brand-name">Habit Tracker</div>
+          <div class="brand-sub">75-day challenge</div>
+        </div>
+      </div>
+
+      <nav class="tabs" aria-label="Main navigation">
+        <button class="tab-btn active" data-tab="today">Today</button>
+        <button class="tab-btn" data-tab="manage">Habits</button>
+        <button class="tab-btn" data-tab="archived">Archived <span id="archivedCount" class="badge"></span></button>
+      </nav>
+
+      <div class="mini-ring-card">
+        <div class="progress-ring" id="challengeRing" aria-label="75 day progress ring">
+          <div class="progress-ring-inner">
+            <span id="ringValue">0</span>
+            <small>days</small>
+          </div>
+        </div>
+        <div class="ring-copy">
+          <div id="challengeProgress" class="ring-label">Day 1 of 75</div>
+          <div class="ring-note">Challenge progress</div>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-panel">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Good morning</p>
+          <h1>Good Morning, Ananya!</h1>
+        </div>
+        <div class="search-row">
+          <input id="searchInput" type="search" placeholder="Search habits…" autocomplete="off" />
+        </div>
+      </header>
+
+      <div id="reminderBanner" class="reminder-banner" hidden></div>
+
+      <section id="tab-today" class="tab-panel active">
+        <div class="section-header-row">
+          <h2>Today's habits</h2>
+          <button id="notifyToggle" class="notify-btn" type="button">🔔 Remind me</button>
+        </div>
+        <div id="todayList" class="list"></div>
+        <p id="todayEmpty" class="empty-state" hidden>Nothing scheduled for today. Enjoy the rest day 🌤️</p>
+      </section>
+
+      <section id="tab-manage" class="tab-panel">
+        <form id="addHabitForm" class="add-form">
+          <h2>Add a habit</h2>
+          <input id="habitName" type="text" placeholder="e.g. Drink 3L water" required maxlength="60" />
+
+          <div class="freq-row">
+            <label><input type="radio" name="freq" value="daily" checked /> Every day</label>
+            <label><input type="radio" name="freq" value="weekdays" /> Weekdays only</label>
+            <label><input type="radio" name="freq" value="custom" /> Custom days</label>
+          </div>
+
+          <div id="customDaysRow" class="custom-days" hidden>
+            <label><input type="checkbox" value="1" /> Mon</label>
+            <label><input type="checkbox" value="2" /> Tue</label>
+            <label><input type="checkbox" value="3" /> Wed</label>
+            <label><input type="checkbox" value="4" /> Thu</label>
+            <label><input type="checkbox" value="5" /> Fri</label>
+            <label><input type="checkbox" value="6" /> Sat</label>
+            <label><input type="checkbox" value="0" /> Sun</label>
+          </div>
+
+          <button type="submit">+ Add Habit</button>
+        </form>
+
+        <h2 class="section-title">Active habits</h2>
+        <div id="manageList" class="list"></div>
+        <p id="manageEmpty" class="empty-state" hidden>No active habits yet. Add your first one above.</p>
+      </section>
+
+      <section id="tab-archived" class="tab-panel">
+        <h2 class="section-title">Archived habits</h2>
+        <p class="subtle">Paused, not deleted — your streak history is kept exactly as it was.</p>
+        <div id="archivedList" class="list"></div>
+        <p id="archivedEmpty" class="empty-state" hidden>Nothing archived. Habits you pause show up here.</p>
+      </section>
+    </main>
+
+    <aside class="calendar-panel">
+      <div class="calendar-header">
+        <h3 id="calendarMonth"></h3>
+      </div>
+      <div class="calendar-weekdays">
+        <span>Sun</span>
+        <span>Mon</span>
+        <span>Tue</span>
+        <span>Wed</span>
+        <span>Thu</span>
+        <span>Fri</span>
+        <span>Sat</span>
+      </div>
+      <div id="calendarGrid" class="calendar-grid"></div>
+    </aside>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
